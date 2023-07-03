@@ -2,21 +2,30 @@ import logo from './logo.svg';
 import {List} from "./List";
 import { useState } from 'react';
 import './App.css';
+import React from 'react';
 
-function App() {
-  const [descriotion,setDescription] = useState('クリック前の表示');
-
-  const changeDescriontion= () =>{
-    setDescription('クリック後の表示')
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {description :'あいうえお'}
+  }
+  changeDescription(){
+    this.setState({
+      description:'あかさたな'
+    })
   }
 
-  return (
-    <div>
-      {descriotion}{}
-      <List title="まみむめも音楽"/>{/* */}
-      <button onClick={changeDescriontion}>ボタン</button>
-    </div>
-  );
+
+  render(){
+    const {description}=this.state
+    return(
+      <div>
+        {description}
+        <List title="アバレンジャー一覧" />
+        <button onClick={()=> this.changeDescription()}>不支持ボックス</button>
+      </div>
+    );
+  }
 }
 
 export default App;
