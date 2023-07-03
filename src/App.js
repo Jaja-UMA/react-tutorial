@@ -1,28 +1,28 @@
-import logo from './logo.svg';
 import {List} from "./List";
-import { useState } from 'react';
 import './App.css';
 import React from 'react';
+import {Form} from "./Form";
 
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {description :'あいうえお'}
+    this.state = {tab : 'list'}
   }
-  changeDescription(){
-    this.setState({
-      description:'あかさたな'
-    })
-  }
-
 
   render(){
-    const {description}=this.state
+    const {tab}=this.state
     return(
       <div>
-        {description}
-        <List title="アバレンジャー一覧" />
-        <button onClick={()=> this.changeDescription()}>不支持ボックス</button>
+        <header>
+          <ul>
+            <li onClick={() => this.setState({tab:'list'})}>リスト</li>
+            <li onClick={() => this.setState({tab:'form'})}>フォーム</li>
+          </ul>
+        </header>
+        <hr />
+        {
+          tab === 'list' ? <List />:<Form />
+        }
       </div>
     );
   }
