@@ -1,19 +1,12 @@
-import { lazy } from "react";
+import { LANGUAGES } from "./languages";
 
-const LAUNGAGE = [
-    'Javascript',
-    'C++',
-    'Ruby',
-    'Java',
-    'PHP',
-    'Go'
-];
-export const List = ({title}) => {
+
+export const List = ({langs}) => {
     return (
         <div>
             {}
             {
-                LAUNGAGE.map((lang,index) => {
+                langs.map((lang,index) => {
                     return <div key={index}>{lang}</div>
                 })
             }

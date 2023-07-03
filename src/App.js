@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import {List} from "./List";
 import { useState } from 'react';
+import {List} from "./List";
 import {Form} from "./Form"
+import { LANGUAGES } from "./languages";
 import './App.css';
 
 function App() {
   const[tab,setTab]=useState('list');
+  const[langs,setLangs]=useState(LANGUAGES);
+
+  const addLang = (lang) =>{
+    setLangs([...langs,lang]);
+    setTab('list');
+  }
 
   return (
     <div>
@@ -18,7 +24,7 @@ function App() {
       <hr />
       {}
       {
-        tab === 'list' ? <List title="取り扱い言語"/>:<form />
+        tab === 'list' ? <List langs = {langs}/>:<Form onAddLang={addLang}/>
       }
     </div>
   );
